@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  api:
+    build: ./src
+    volumes:
+      - ./src/:/app/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env
+    networks:
+      - inv-mgmt
+
+  db:
+    image: mongo
+    restart: always
+    volumes:
+      - db-data:/data/db
+    env_file:
+      - ./.env
+    networks:
+      - inv-mgmt
+
+  robo3t:
+    image: robo3t/robo3t
+    restart: always
+    network_mode: host
+
+networks:
+  inv-mgmt:
+    driver: bridge
+
+volumes:
+  db-data:
