@@ -1,0 +1,34 @@
+# General
+*.DS_Store
+.AppleDouble
+.LSOverride
+.gitignore
+Dockerfile
+.cache
+LICENSE
+*.md
+.idea/
+.vscode/
+.git/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.manifest
+*.spec
+*.pyc
+
+# Flask stuff:
+instance/
+.webassets-cache
+*.log
+
+# Environments
+.python-version
+.env
+.venv
+env/
+venv/
+ENV/

@@ -22,11 +22,6 @@ services:
     networks:
       - inv-mgmt
 
-  robo3t:
-    image: robo3t/robo3t
-    restart: always
-    network_mode: host
-
 networks:
   inv-mgmt:
     driver: bridge
