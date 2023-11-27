@@ -47,6 +47,10 @@ class ProductService(BaseService):
         return [False, product, 200]
 
     def update(self, product_id, update_data):
+        [err, data, status_code] = self.get(product_id)
+        if err:
+            msg = data
+            return [True, msg, status_code]
         update_data["updated_at"] = datetime.utcnow()
         try:
             client.db.products.update_one(
@@ -55,10 +59,16 @@ class ProductService(BaseService):
         except Exception as e:
             self.logger.error("ProductService.update(): %s", str(e))
             raise AppError(500)
+        return [False, None, 200]
 
     def delete(self, product_id):
+        [err, data, status_code] = self.get(product_id)
+        if err:
+            msg = data
+            return [True, msg, status_code]
         try:
             client.db.products.delete_one({"_id": ObjectId(product_id)})
         except Exception as e:
             self.logger.error("ProductService.delete(): %s", str(e))
             raise AppError(500)
+        return [False, None, 200]
