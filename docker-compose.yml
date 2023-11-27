@@ -12,15 +12,15 @@ services:
     networks:
       - inv-mgmt
 
-  db:
-    image: mongo
-    restart: always
-    volumes:
-      - db-data:/data/db
-    env_file:
-      - ./.env
-    networks:
-      - inv-mgmt
+  # db:
+  #   image: mongo
+  #   restart: always
+  #   volumes:
+  #     - db-data:/data/db
+  #   env_file:
+  #     - ./.env
+  #   networks:
+  #     - inv-mgmt
 
 networks:
   inv-mgmt:

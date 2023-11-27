@@ -18,7 +18,7 @@ wait_for_mongodb() {
   done
 }
 
-wait_for_mongodb
+# wait_for_mongodb
 
 export FLASK_APP=app.start:app
 echo "Initializing DB..."
