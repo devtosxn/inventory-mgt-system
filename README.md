@@ -4,7 +4,7 @@
 
 This is a simple inventory management system API built with Flask and Flask-RESTful. It allows users to create, delete, update and retrieve products. It also allows users to add products to cart and purchase products.
 
-- [Link to API Documentation](https://documenter.getpostman.com/view/example)
+- [Link to API Documentation](https://documenter.getpostman.com/view/15948667/2s9YeEcXbX)
 
 <!-- ![Screenshot](api-doc.png?raw=true "API DOC") -->
 
@@ -36,7 +36,7 @@ Two user accounts have been created for testing purposes. The details are as fol
   - email: janedoe@example.com
   - password: TestPassword
 
-- The API documentation is available on `https://documenter.getpostman.com/example` on your browser.
+- The API documentation is available on `https://documenter.getpostman.com/view/15948667/2s9YeEcXbX` on your browser.
 
 ## How To Start App
 
