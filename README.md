@@ -44,6 +44,7 @@ Two user accounts have been created for testing purposes. The details are as fol
 - create a .env file with the variables in the env.sample file
 
   - `cp env.sample .env`
+  - Update MONGO_DB_URI in .env with yours so that the application can connect to the database
 
 - Run `make build`
 
