@@ -1,5 +1,4 @@
-from app.products.controllers.product import (ProductController,
-                                              ProductDetailController)
+from app.products.controllers.product import ProductController, ProductDetailController
 
 
 def init_product_routes(api):

@@ -1,13 +1,11 @@
 import core.settings as config
 from app.users.services.user import UserService
-# from app.users.models import User
 from core.error_handlers import AppError
 from core.resources.jwt import JWTClient
 from core.utils.utils import BaseService
 
 
 class SessionTokenService(BaseService):
-    # model = User
     user_service = UserService
     jwt_client = JWTClient(config)
 
@@ -20,7 +18,6 @@ class SessionTokenService(BaseService):
                 "SessionTokenService.generate_token(): Email or password not provided"
             )
             err_msg = "Email and password are required"
-            # raise AppError(400, err_msg)
             return [True, err_msg, 400]
 
         user = self.user_service.get(self, email=email)
@@ -34,5 +31,4 @@ class SessionTokenService(BaseService):
             return [True, err_msg, 401]
 
         jwt_token = self.jwt_client.create_token(str(user["_id"]))
-
         return [False, jwt_token, 200]

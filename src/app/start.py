@@ -3,7 +3,6 @@ import logging
 from flask import Flask, json
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
-# from flask_migrate import Migrate
 from flask_restful import Api
 from marshmallow.exceptions import ValidationError
 from werkzeug.exceptions import BadRequest
@@ -46,15 +45,12 @@ class App:
         self.app.db = self.build_db()
         CORS(self.app)
         JWTManager(self.app)
-        # Migrate(self.app, self.app.db)
         self.set_routes()
 
         return self.app
 
     def build_db(self):
-        # self.db.init_app(self.app)
         db.init_app(self.app)
-        # return self.db
         return db
 
     def set_routes(self):

@@ -12,7 +12,6 @@ class ProductService(BaseService):
     def create(self, product_data):
         if "quantity" not in product_data:
             err_msg = "Quantity is required when creating a product"
-            # raise AppError(400, err_msg)
             return [True, err_msg, 400]
 
         product_data["in_stock"] = product_data.get("quantity", 0) > 0
@@ -43,7 +42,6 @@ class ProductService(BaseService):
 
         if not product:
             err_msg = "Product not found"
-            # raise AppError(404, err_msg)
             return [True, err_msg, 404]
 
         return [False, product, 200]

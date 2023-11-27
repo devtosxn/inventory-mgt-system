@@ -142,6 +142,10 @@ class CartItemService(BaseService):
         user = data.get("user", {})
         cart = data.get("cart", {})
 
+        if cart.get("is_paid"):
+            err_msg = "Payment already processed for Cart"
+            return [True, err_msg, 400]
+
         item_in_cart = None
         for item in cart.get("items", []):
             if item["product_id"] == product_id:
@@ -150,7 +154,6 @@ class CartItemService(BaseService):
 
         if item_in_cart:
             err_msg = "Item already in cart"
-            # raise AppError(400, err_msg)
             return [True, err_msg, status_code]
 
         [err, data, status_code] = self.check_stock(product_id, product_quantity, cart)

@@ -35,7 +35,7 @@ class CartService(BaseService):
         try:
             user_cart = client.db.users.find_one({"carts._id": ObjectId(cart_id)})
         except Exception as e:
-            self.logger.error("CartService.get_cart(): %s", e)
+            self.logger.error("CartService.get(): %s", e)
             raise AppError(500)
 
         if not user_cart:
@@ -58,3 +58,14 @@ class CartService(BaseService):
             return []
 
         return user_carts["carts"]
+
+    def update(self, cart_id, data):
+        flat_data = {"carts.$." + key: value for key, value in data.items()}
+        try:
+            client.db.users.update_one(
+                {"carts._id": ObjectId(cart_id)},
+                {"$set": {"carts.$.updated_at": datetime.utcnow(), **flat_data}},
+            )
+        except Exception as e:
+            self.logger.error("CartService.update(): %s", e)
+            raise AppError(500)

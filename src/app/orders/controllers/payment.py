@@ -10,6 +10,10 @@ class PaymentController(Resource):
 
     @jwt_required()
     def post(self, cart_id):
-        self.payment_service.process_payment(cart_id)
+        [err, data, status_code] = self.payment_service.process_payment(cart_id)
+        if err:
+            return Response(success=False, message=data, status_code=status_code)
 
-        return Response(success=True, message="Payment successful", status_code=200)
+        return Response(
+            success=True, message="Payment successful", status_code=status_code
+        )
